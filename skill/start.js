@@ -5,7 +5,6 @@ module.exports = class start {
         let message = {
             type: "text",
             text: `こんにちは!!`
-        };
 
         await bot.reply(message);
     }
