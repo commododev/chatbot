@@ -4,7 +4,7 @@ module.exports = class start {
     async finish(bot, event, context){
         let message = {
             type: "template",
-            altText: "話しかけてくれてありがとうございます。訪問演奏会、チャリティーコンサート、遠征、その他からお問い合わせになりたい活動を選んでください。",
+            altText: "話しかけてくれてありがとうございます。訪問演奏会、チャリティーコンサート、遠征、その他からお問い合わせになりたい活動を選んで入力してください。",
             template: {
                 type: "buttons",
                 text: "話しかけてくれてありがとうございます。以下からお問い合わせになりたい活動をお選びください。",
