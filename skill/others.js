@@ -7,7 +7,7 @@ module.exports = class others {
     async finish(bot, event, context){
         let message = {
             type: "text",
-            text: "その他についてお問い合わせありがとうございます。"
+            text: "ensemble.commodo.2014@gmail.com \n までご連絡ください"
         };
 
         await bot.reply(message);
