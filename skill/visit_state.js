@@ -3,7 +3,7 @@
 
 'use strict';
 
-module.exports = class concert_information_conductor {
+module.exports = class visit_state {
     async finish(bot, event, context){
         let message = {
             type: "text",
