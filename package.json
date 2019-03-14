@@ -12,6 +12,8 @@
   "dependencies": {
     "bot-express": "^0.5.37",
     "config": "^3.0.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "moment": "^2.24.0",
+    "request": "^2.88.0"
   }
 }
