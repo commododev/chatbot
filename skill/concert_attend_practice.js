@@ -3,9 +3,6 @@
 
 'use strict';
 const moment = require('moment');
-// GSSのURLをファイルから取得するため(Herokuにデプロイする方はHerokuで設定する)
-// GSSを導入したい場合は以下*の付いているコメント付近を参考にしてください
-const config = require("config");
 
 // 曜日と月の対応づけ
 // GSSが勝手にRFC2822もどきみたいな書式で返すからこうなった
@@ -18,21 +15,9 @@ const doRequest = require('../doRequest');
 module.exports = class concert_attend_practice {
     async finish(bot, event, context){
         let reply = "以下が練習日程です。";
-        // *上記のdoRequest関数を非同期で呼び出す
-        const getGSS = async () => {
-            // *URL等の設定
-            let URL = process.env.PRACTICE_DATE_GSS || config.env.PRACTICE_DATE_GSS;
-            const options = {
-                uri: URL,
-                headers: {'Content-type': 'application/json'},
-                json: true
-            }
-            // *await指定しないと非同期に実行しちゃってデータ取得より先にBotが返事しちゃう
-            return await doRequest.doRequest(options);
-        }
-
         // *await指定しないと非同期に実行しちゃってデータ取得より先にBotが返事しちゃう
-        await getGSS().then((data) => {
+        // *この関数の引数で呼び出したいシートの名前を指定
+        await doRequest.getGSS('concert_attend_practice').then((data) => {
             // formatを適当にいじって返事にする
             data.forEach(element => {
                 //曜日まで
