@@ -3,18 +3,25 @@
 
 'use strict';
 
+const doRequest = require('../doRequest');
+
 module.exports = class concert_information_date{
     async finish(bot, event, context){
+        let text = "チャリティーコンサートは以下の日時場所で開催します。";
+        await doRequest.getGSS('concert_information_date').then((data) => {
+            let info = data[0];
+            text += 
+`
+<日時>
+${info.date}
+<場所>
+${info.place}
+${info.price}
+${info.other}`; 
+        });
         let message = [{
             type: "text",
-            text: 
-            `チャリティーコンサートは以下の日時場所で開催します。
-<日時>
-2019年5月25日(土) 14:00開演 13:30開場 
-<場所>
-大田区民プラザ 大ホール
-全席自由・500円(中学生以下無料、全額石巻市へ寄付)
-未就学児入場可能で声を出しても大丈夫です。`
+            text: text
         },
         {
             type: "image",
